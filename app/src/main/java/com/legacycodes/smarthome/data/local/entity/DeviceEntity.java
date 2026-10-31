@@ -2,6 +2,7 @@ package com.legacycodes.smarthome.data.local.entity;
 
 import androidx.room.ColumnInfo;
 import androidx.room.Entity;
+import androidx.room.Ignore;
 import androidx.room.Index;
 import androidx.room.PrimaryKey;
 
@@ -20,6 +21,7 @@ import androidx.room.PrimaryKey;
         tableName = "devices",
         indices = { @Index(value = "ip_address", unique = true) }
 )
+
 public class DeviceEntity {
 
     @PrimaryKey(autoGenerate = true)
@@ -46,7 +48,7 @@ public class DeviceEntity {
         // required by Room + mappers
         this.lastSeen = 0L;
     }
-
+    @Ignore
     public DeviceEntity(long id,
                         String name,
                         String ipAddress,
